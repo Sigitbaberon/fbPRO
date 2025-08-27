@@ -39,9 +39,9 @@ const VerificationStep: React.FC<VerificationStepProps> = ({ uploadedFile, onVer
         // PENTING: Ganti 'YOUR_API_KEY_HERE' dengan API Key Google AI Anda yang sebenarnya.
         // Untuk alasan keamanan, ini tidak direkomendasikan untuk produksi.
         // Namun, ini akan membuat fitur verifikasi berfungsi saat di-deploy.
-        const apiKey = 'YOUR_API_KEY_HERE';
+        const apiKey = 'AIzaSyDHYnj-E0V0h16thBf_-mycv4OnaKRxfgM';
 
-        if (apiKey === 'YOUR_API_KEY_HERE' || !apiKey) {
+        if (apiKey === 'AIzaSyDHYnj-E0V0h16thBf_-mycv4OnaKRxfgM' || !apiKey) {
           setStatus(VerificationStatus.FAILED);
           setMessage('Verifikasi Gagal');
           setFailureReason('Konfigurasi API Key tidak valid. Harap hubungi developer.');

@@ -36,10 +36,22 @@ const VerificationStep: React.FC<VerificationStepProps> = ({ uploadedFile, onVer
       setMessage('Mempersiapkan gambar untuk dianalisis...');
       
       try {
+        // PENTING: Ganti 'YOUR_API_KEY_HERE' dengan API Key Google AI Anda yang sebenarnya.
+        // Untuk alasan keamanan, ini tidak direkomendasikan untuk produksi.
+        // Namun, ini akan membuat fitur verifikasi berfungsi saat di-deploy.
+        const apiKey = 'YOUR_API_KEY_HERE';
+
+        if (apiKey === 'YOUR_API_KEY_HERE' || !apiKey) {
+          setStatus(VerificationStatus.FAILED);
+          setMessage('Verifikasi Gagal');
+          setFailureReason('Konfigurasi API Key tidak valid. Harap hubungi developer.');
+          return;
+        }
+
         const base64Image = await fileToBase64(uploadedFile);
         setMessage('Menganalisis gambar dengan AI...');
 
-        const ai = new GoogleGenAI({ apiKey: process.env.API_KEY! });
+        const ai = new GoogleGenAI({ apiKey: apiKey });
         
         const prompt = `
           You are an automated verification system for a QRIS payment receipt.
